@@ -1,0 +1,13 @@
+
+module =
+  using String as S
+  using List as L
+
+  let ends_with_sep? = S.(get path (len path - 1)) eq "/"
+
+  let pub (/) lhs rhs = 
+    if ends_with_sep? lhs then lhs ++ rhs
+    else S.cat [lhs, "/", rhs]
+
+  let pub join = L.reduce_left' (/)
+end
