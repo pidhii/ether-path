@@ -1,0 +1,16 @@
+
+module =
+
+  let pub name = "path"
+  let pub main = "lib.so"
+  let pub files = ["lib.eth"]
+
+  let pub build! =
+    let etherFlags = IO.shell "pkg-config ether --cflags" |> String.chop in
+    unless system "gcc -shared -fpic %d -o lib.so lib.c" etherFlags == 0 then
+      raise Failure
+
+  let pub post_install! =
+    system "rm -v lib.so"
+
+end

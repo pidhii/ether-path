@@ -3,9 +3,9 @@ module =
   using String as S
   using List as L
 
-  let ends_with_sep? = S.(get path (len path - 1)) eq "/"
+  let ends_with_sep? path = S.(get (len path - 1) path) eq "/"
 
-  let pub (/) lhs rhs = 
+  let pub (/) lhs rhs =
     if ends_with_sep? lhs then lhs ++ rhs
     else S.cat [lhs, "/", rhs]
 
