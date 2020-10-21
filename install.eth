@@ -7,8 +7,8 @@ module =
 
   let pub build! =
     let etherFlags = IO.shell "pkg-config ether --cflags" |> String.chop in
-    unless system "gcc -shared -fpic %d -o lib.so lib.c" etherFlags == 0 then
-      raise Failure
+    unless system "gcc -shared -fpic {etherFlags} -o lib.so lib.c" == 0 then
+      raise Build_error
 
   let pub post_install! =
     system "rm -v lib.so"
