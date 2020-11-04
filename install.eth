@@ -6,7 +6,7 @@ module =
   let pub files = ["lib.eth"]
 
   let pub build! =
-    let etherFlags = IO.shell "pkg-config ether --cflags" |> String.chop in
+    let etherFlags = IO.shell "pkg-config ether --cflags" |> String.chomp in
     unless system "gcc -shared -fpic {etherFlags} -o lib.so lib.c" == 0 then
       raise Build_error
 
