@@ -7,7 +7,7 @@
 static eth_t
 _dirname(void)
 {
-  eth_args args = eth_start(2);
+  eth_args args = eth_start(1);
   eth_t path = eth_arg2(args, eth_string_type);
   char buf[PATH_MAX];
   memcpy(buf, eth_str_cstr(path), eth_str_len(path) + 1);
@@ -17,7 +17,7 @@ _dirname(void)
 static eth_t
 _basename(void)
 {
-  eth_args args = eth_start(2);
+  eth_args args = eth_start(1);
   eth_t path = eth_arg2(args, eth_string_type);
   char buf[PATH_MAX];
   memcpy(buf, eth_str_cstr(path), eth_str_len(path) + 1);
