@@ -26,7 +26,7 @@ _basename(void)
 
 
 int
-ether_module(eth_module *mod, eth_env *topenv)
+ether_module(eth_module *mod, eth_root *topenv)
 {
   eth_define(mod, "dirname", eth_proc(_dirname, 1));
   eth_define(mod, "basename", eth_proc(_basename, 1));
