@@ -1,9 +1,12 @@
 using String as S
 using List as L
 
-let ends_with_sep? path = S.(get (len path - 1) path) eq "/"
+let ends_with_sep? path = S.(get path (len path - 1)) eq "/"
+let begins_with_sep? path = S.(get path 0) eq "/"
 
 let pub (/) lhs rhs =
+  when begins_with_sep? rhs then
+    invalid_argument ()
   if ends_with_sep? lhs then lhs ++ rhs
   else S.cat [lhs, "/", rhs]
 

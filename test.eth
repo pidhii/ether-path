@@ -1,0 +1,11 @@
+open IO
+
+write "test (/) ... "; flush stdout
+try
+  assert Path.("foo" / "bar") eq "foo/bar"
+  assert Path.("foo/" / "bar") eq "foo/bar"
+  assert (try Path.("foo" / "/bar"; false) with Invalid_argument -> true)
+  print "\e[38;5;2;1m✓\e[0m"
+with e ->
+  print "\e[38;5;1;1m✗\e[0m"
+
